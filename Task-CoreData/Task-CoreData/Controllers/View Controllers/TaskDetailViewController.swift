@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaskDetailViewController: UIViewController {
+class TaskDetailViewController: UIViewController, UNUserNotificationCenterDelegate {
     // MARK: - Outlets
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var taskNotesTextView: UITextView!
@@ -24,6 +24,8 @@ class TaskDetailViewController: UIViewController {
         taskNotesTextView.layer.borderWidth = 0.5
         taskNotesTextView.layer.borderColor = UIColor.systemFill.cgColor
         taskNotesTextView.layer.cornerRadius = 8
+        //allows the keyboard to be hidden when the user taps anywhere outside the text fields
+        hideKeyboardWhenTappedAround()
         updateViews()
     }
     
@@ -38,6 +40,8 @@ class TaskDetailViewController: UIViewController {
             TaskController.shared.createTaskWith(name: taskName, notes: taskNotes, dueDate: date)
         }
         
+        //create notification
+        scheduleNotification()
         navigationController?.popViewController(animated: true)
     }
     
@@ -51,5 +55,21 @@ class TaskDetailViewController: UIViewController {
         taskNameTextField.text = taskDetails.name
         taskNotesTextView.text = taskDetails.notes
         taskDueDatePicker.date = taskDetails.dueDate ?? Date()
+    }
+    
+    func scheduleNotification() {
+        let center = UNUserNotificationCenter.current()
+
+        let content = UNMutableNotificationContent()
+        content.title = "Your task is due."
+        content.body = "Mark \(taskNameTextField.text ?? "task") as done?"
+        content.sound = UNNotificationSound.default
+
+        let date = self.date ?? Date()
+        let triggerDate = Calendar.current.dateComponents([.day, .hour, .minute], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
     }
 }

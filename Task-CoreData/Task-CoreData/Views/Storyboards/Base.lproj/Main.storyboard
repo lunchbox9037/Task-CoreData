@@ -36,6 +36,9 @@
                                                 <constraint firstAttribute="height" constant="30" id="EwY-6m-CuX"/>
                                                 <constraint firstAttribute="width" secondItem="Jmx-iq-ewZ" secondAttribute="height" multiplier="1:1" id="YFU-Sy-ZO9"/>
                                             </constraints>
+                                            <state key="normal">
+                                                <color key="titleColor" systemColor="systemBlueColor"/>
+                                            </state>
                                             <connections>
                                                 <action selector="completionButtonTapped:" destination="NYp-yr-BlS" eventType="touchUpInside" id="hcT-hn-b4E"/>
                                             </connections>
@@ -115,14 +118,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AaA-sd-HHo">
-                                <rect key="frame" x="24" y="170" width="366" height="179"/>
+                                <rect key="frame" x="20" y="170" width="374" height="179"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="vDn-w7-uKH">
-                                <rect key="frame" x="20" y="373" width="374" height="57"/>
+                            <datePicker contentMode="right" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="vDn-w7-uKH">
+                                <rect key="frame" x="20" y="359" width="374" height="90"/>
                                 <connections>
                                     <action selector="dueDatePickerChanged:" destination="dwI-t1-gX7" eventType="valueChanged" id="WhT-nv-to8"/>
                                 </connections>
@@ -131,12 +134,12 @@
                         <viewLayoutGuide key="safeArea" id="gNW-E5-Zg4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDn-w7-uKH" firstAttribute="top" secondItem="AaA-sd-HHo" secondAttribute="bottom" constant="24" id="0kU-Lj-khn"/>
-                            <constraint firstItem="gNW-E5-Zg4" firstAttribute="trailing" secondItem="AaA-sd-HHo" secondAttribute="trailing" constant="24" id="24V-40-3sy"/>
+                            <constraint firstItem="vDn-w7-uKH" firstAttribute="top" secondItem="AaA-sd-HHo" secondAttribute="bottom" constant="10" id="0kU-Lj-khn"/>
+                            <constraint firstItem="gNW-E5-Zg4" firstAttribute="trailing" secondItem="AaA-sd-HHo" secondAttribute="trailing" constant="20" id="24V-40-3sy"/>
                             <constraint firstItem="AaA-sd-HHo" firstAttribute="top" secondItem="csc-C4-Alz" secondAttribute="bottom" constant="24" id="7FJ-TS-O43"/>
-                            <constraint firstItem="AaA-sd-HHo" firstAttribute="leading" secondItem="gNW-E5-Zg4" secondAttribute="leading" constant="24" id="DWh-yI-nQ7"/>
+                            <constraint firstItem="AaA-sd-HHo" firstAttribute="leading" secondItem="gNW-E5-Zg4" secondAttribute="leading" constant="20" id="DWh-yI-nQ7"/>
                             <constraint firstItem="vDn-w7-uKH" firstAttribute="leading" secondItem="gNW-E5-Zg4" secondAttribute="leading" constant="20" id="Mqt-yg-ngw"/>
-                            <constraint firstItem="vDn-w7-uKH" firstAttribute="height" secondItem="1Cu-gg-nLT" secondAttribute="height" multiplier="0.0636161" id="Qhv-3e-4wD"/>
+                            <constraint firstItem="vDn-w7-uKH" firstAttribute="height" secondItem="1Cu-gg-nLT" secondAttribute="height" multiplier="0.1" id="Qhv-3e-4wD"/>
                             <constraint firstItem="csc-C4-Alz" firstAttribute="top" secondItem="gNW-E5-Zg4" secondAttribute="top" constant="24" id="UJ1-Jg-vOg"/>
                             <constraint firstItem="gNW-E5-Zg4" firstAttribute="trailing" secondItem="vDn-w7-uKH" secondAttribute="trailing" constant="20" id="V4Q-rO-yo7"/>
                             <constraint firstItem="AaA-sd-HHo" firstAttribute="height" secondItem="1Cu-gg-nLT" secondAttribute="height" multiplier="0.2" id="Ypq-KB-Y7w"/>
@@ -172,6 +175,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

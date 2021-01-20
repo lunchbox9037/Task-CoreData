@@ -27,6 +27,7 @@ class TaskController {
     func createTaskWith(name: String, notes: String?, dueDate: Date?) {
         let newTask = Task(name: name, notes: notes, dueDate: dueDate)
         incompleteTasks.append(newTask)
+        
         CoreDataStack.saveContext()
     }
     

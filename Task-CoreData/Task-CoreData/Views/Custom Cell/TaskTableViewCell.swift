@@ -31,20 +31,23 @@ class TaskTableViewCell: UITableViewCell {
         delegate?.taskCellButtonTapped(self)
     }
     
+    // MARK: - Functions
     func updateCells() {
         guard let taskDetails = task else {return}
         let dueDateFormatted = DateFormatter.dueDate.string(from: taskDetails.dueDate ?? Date())
         let currentDateFormatted = DateFormatter.dueDate.string(from: Date())
         taskNameLabel.text = taskDetails.name
         if taskDetails.isComplete {
-            dueDateLabel.text = "Completed on \(currentDateFormatted)"
+            dueDateLabel.text = "Completed on: \(currentDateFormatted)"
             completionButton.setBackgroundImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            completionButton.tintColor = UIColor.systemFill
             taskCellView.backgroundColor = UIColor.systemFill
             taskNameLabel.textColor = UIColor.systemFill
             dueDateLabel.textColor = UIColor.systemFill
         } else {
-            dueDateLabel.text = "Complete by \(dueDateFormatted)"
+            dueDateLabel.text = "Complete by: \(dueDateFormatted)"
             completionButton.setBackgroundImage(UIImage(systemName: "square"), for: .normal)
+            completionButton.tintColor = UIColor.systemBlue
             taskCellView.backgroundColor = UIColor.systemGroupedBackground
             taskNameLabel.textColor = UIColor.label
             dueDateLabel.textColor = UIColor.systemBlue
