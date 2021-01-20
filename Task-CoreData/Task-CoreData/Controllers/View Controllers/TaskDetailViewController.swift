@@ -41,7 +41,8 @@ class TaskDetailViewController: UIViewController, UNUserNotificationCenterDelega
         }
         
         //create notification
-        scheduleNotification()
+        scheduleNotification(taskName: taskName, dueDate: date ?? Date())
+        
         navigationController?.popViewController(animated: true)
     }
     
@@ -55,21 +56,5 @@ class TaskDetailViewController: UIViewController, UNUserNotificationCenterDelega
         taskNameTextField.text = taskDetails.name
         taskNotesTextView.text = taskDetails.notes
         taskDueDatePicker.date = taskDetails.dueDate ?? Date()
-    }
-    
-    func scheduleNotification() {
-        let center = UNUserNotificationCenter.current()
-
-        let content = UNMutableNotificationContent()
-        content.title = "Your task is due."
-        content.body = "Mark \(taskNameTextField.text ?? "task") as done?"
-        content.sound = UNNotificationSound.default
-
-        let date = self.date ?? Date()
-        let triggerDate = Calendar.current.dateComponents([.day, .hour, .minute], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        center.add(request)
     }
 }

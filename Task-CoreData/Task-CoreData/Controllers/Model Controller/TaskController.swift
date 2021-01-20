@@ -13,7 +13,6 @@ class TaskController {
     var sectionedTasks: [[Task]] {[incompleteTasks, completeTasks]}
     var completeTasks: [Task] = []
     var incompleteTasks: [Task] = []
-    
     //create fetch request
     private lazy var fetchRequest: NSFetchRequest<Task> = {
         //create and assign a fetch request that looks for medication objects
@@ -27,7 +26,6 @@ class TaskController {
     func createTaskWith(name: String, notes: String?, dueDate: Date?) {
         let newTask = Task(name: name, notes: notes, dueDate: dueDate)
         incompleteTasks.append(newTask)
-        
         CoreDataStack.saveContext()
     }
     
