@@ -10,7 +10,10 @@ import CoreData
 class TaskController {
     // MARK: - Properties
     static var shared = TaskController()
-    var tasks: [Task] = []
+    var sectionedTasks: [[Task]] {[incompleteTasks, completeTasks]}
+    var completeTasks: [Task] = []
+    var incompleteTasks: [Task] = []
+    
     //create fetch request
     private lazy var fetchRequest: NSFetchRequest<Task> = {
         //create and assign a fetch request that looks for medication objects
@@ -22,12 +25,15 @@ class TaskController {
     
     // MARK: - CRUD
     func createTaskWith(name: String, notes: String?, dueDate: Date?) {
-        Task(name: name, notes: notes, dueDate: dueDate)
+        let newTask = Task(name: name, notes: notes, dueDate: dueDate)
+        incompleteTasks.append(newTask)
         CoreDataStack.saveContext()
     }
     
     func fetchTasks() {
-        tasks = (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
+        let tasks = (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
+        completeTasks = tasks.filter({$0.isComplete})
+        incompleteTasks = tasks.filter({!$0.isComplete})
     }
     
     func update(task: Task, with name: String, notes: String?, dueDate: Date?) {
@@ -39,12 +45,28 @@ class TaskController {
     
     func toggleIsComplete(task: Task) {
         task.isComplete.toggle()
+        if task.isComplete {
+            if let taskToToggle = incompleteTasks.firstIndex(of: task) {
+                incompleteTasks.remove(at: taskToToggle)
+                completeTasks.append(task)
+            }
+        } else {
+            if let taskToToggle = completeTasks.firstIndex(of: task) {
+                completeTasks.remove(at: taskToToggle)
+                incompleteTasks.append(task)
+            }
+        }
         CoreDataStack.saveContext()
     }
     
     func delete(task: Task) {
-        guard let taskToDelete = tasks.firstIndex(of: task) else {return}
-        tasks.remove(at: taskToDelete)
+        if task.isComplete {
+            guard let taskToDelete = completeTasks.firstIndex(of: task) else {return}
+            completeTasks.remove(at: taskToDelete)
+        } else {
+            guard let taskToDelete = incompleteTasks.firstIndex(of: task) else {return}
+            incompleteTasks.remove(at: taskToDelete)
+        }
         CoreDataStack.context.delete(task)
         CoreDataStack.saveContext()
     }

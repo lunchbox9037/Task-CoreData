@@ -19,6 +19,7 @@
 		F61FE7F225B7867500EACE56 /* Task+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61FE7F125B7867500EACE56 /* Task+Convenience.swift */; };
 		F61FE7F525B7884F00EACE56 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61FE7F425B7884F00EACE56 /* TaskController.swift */; };
 		F61FE7F925B794E600EACE56 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61FE7F825B794E600EACE56 /* TaskTableViewCell.swift */; };
+		F61FE7FF25B79C9100EACE56 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61FE7FE25B79C9100EACE56 /* DateFormatterExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F61FE7F125B7867500EACE56 /* Task+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Convenience.swift"; sourceTree = "<group>"; };
 		F61FE7F425B7884F00EACE56 /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		F61FE7F825B794E600EACE56 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		F61FE7FE25B79C9100EACE56 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		7EDB766F25B6996A00B80B7D /* Task-CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				F61FE7FC25B79C4100EACE56 /* Helper */,
 				F61FE7EC25B785B300EACE56 /* Model */,
 				7EDB768C25B6999F00B80B7D /* Views */,
 				F61FE7E225B781FC00EACE56 /* Controllers */,
@@ -157,6 +160,14 @@
 			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
+		F61FE7FC25B79C4100EACE56 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F61FE7FE25B79C9100EACE56 /* DateFormatterExtension.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -229,6 +240,7 @@
 			files = (
 				7EDB767125B6996A00B80B7D /* AppDelegate.swift in Sources */,
 				7EDB767325B6996A00B80B7D /* SceneDelegate.swift in Sources */,
+				F61FE7FF25B79C9100EACE56 /* DateFormatterExtension.swift in Sources */,
 				F61FE7F925B794E600EACE56 /* TaskTableViewCell.swift in Sources */,
 				F61FE7E725B782AB00EACE56 /* TaskListTableViewController.swift in Sources */,
 				F61FE7F225B7867500EACE56 /* Task+Convenience.swift in Sources */,

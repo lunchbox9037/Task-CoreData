@@ -17,21 +17,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="NYp-yr-BlS" customClass="TaskTableViewCell" customModule="Task_CoreData" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="61"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="89" id="NYp-yr-BlS" customClass="TaskTableViewCell" customModule="Task_CoreData" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="89"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NYp-yr-BlS" id="cqG-ex-GJ5">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfZ-yk-cbD">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(task name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfZ-yk-cbD">
                                             <rect key="frame" x="20" y="20" width="334" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmx-iq-ewZ">
-                                            <rect key="frame" x="364" y="15.5" width="30" height="30"/>
+                                            <rect key="frame" x="364" y="29.5" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="EwY-6m-CuX"/>
                                                 <constraint firstAttribute="width" secondItem="Jmx-iq-ewZ" secondAttribute="height" multiplier="1:1" id="YFU-Sy-ZO9"/>
@@ -40,18 +40,29 @@
                                                 <action selector="completionButtonTapped:" destination="NYp-yr-BlS" eventType="touchUpInside" id="hcT-hn-b4E"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(duedate)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hZ-ZS-zPO">
+                                            <rect key="frame" x="20" y="51" width="334" height="18"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="wfZ-yk-cbD" firstAttribute="top" secondItem="cqG-ex-GJ5" secondAttribute="top" constant="20" id="9dN-8V-RRm"/>
                                         <constraint firstAttribute="trailing" secondItem="Jmx-iq-ewZ" secondAttribute="trailing" constant="20" id="AaU-SE-yQY"/>
-                                        <constraint firstAttribute="bottom" secondItem="wfZ-yk-cbD" secondAttribute="bottom" constant="20" id="GM4-tD-3e8"/>
+                                        <constraint firstItem="7hZ-ZS-zPO" firstAttribute="top" secondItem="wfZ-yk-cbD" secondAttribute="bottom" constant="10" id="C1e-gU-TWz"/>
+                                        <constraint firstAttribute="bottom" secondItem="7hZ-ZS-zPO" secondAttribute="bottom" constant="20" id="Q3v-2C-JxM"/>
                                         <constraint firstItem="wfZ-yk-cbD" firstAttribute="leading" secondItem="cqG-ex-GJ5" secondAttribute="leading" constant="20" id="bIy-LE-gTS"/>
+                                        <constraint firstItem="7hZ-ZS-zPO" firstAttribute="leading" secondItem="cqG-ex-GJ5" secondAttribute="leading" constant="20" id="e0t-e1-cKK"/>
                                         <constraint firstItem="Jmx-iq-ewZ" firstAttribute="leading" secondItem="wfZ-yk-cbD" secondAttribute="trailing" constant="10" id="jW8-U4-tTc"/>
                                         <constraint firstItem="Jmx-iq-ewZ" firstAttribute="centerY" secondItem="cqG-ex-GJ5" secondAttribute="centerY" id="qtA-4N-sth"/>
+                                        <constraint firstItem="Jmx-iq-ewZ" firstAttribute="leading" secondItem="7hZ-ZS-zPO" secondAttribute="trailing" constant="10" id="zam-qV-xRb"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="completionButton" destination="Jmx-iq-ewZ" id="zGz-MW-jL3"/>
+                                    <outlet property="dueDateLabel" destination="7hZ-ZS-zPO" id="zEm-jF-lim"/>
+                                    <outlet property="taskCellView" destination="cqG-ex-GJ5" id="gNz-Yw-fC5"/>
                                     <outlet property="taskNameLabel" destination="wfZ-yk-cbD" id="yoU-a7-aN9"/>
                                     <segue destination="dwI-t1-gX7" kind="show" identifier="toTaskDetails" id="wrm-Va-Jlk"/>
                                 </connections>
@@ -72,7 +83,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFG-UW-hS7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-35" y="-21"/>
+            <point key="canvasLocation" x="-36.231884057971016" y="-21.428571428571427"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hK9-n9-339">
@@ -110,8 +121,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="vDn-w7-uKH">
-                                <rect key="frame" x="0.0" y="373" width="414" height="216"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="vDn-w7-uKH">
+                                <rect key="frame" x="20" y="373" width="374" height="57"/>
                                 <connections>
                                     <action selector="dueDatePickerChanged:" destination="dwI-t1-gX7" eventType="valueChanged" id="WhT-nv-to8"/>
                                 </connections>
@@ -124,12 +135,14 @@
                             <constraint firstItem="gNW-E5-Zg4" firstAttribute="trailing" secondItem="AaA-sd-HHo" secondAttribute="trailing" constant="24" id="24V-40-3sy"/>
                             <constraint firstItem="AaA-sd-HHo" firstAttribute="top" secondItem="csc-C4-Alz" secondAttribute="bottom" constant="24" id="7FJ-TS-O43"/>
                             <constraint firstItem="AaA-sd-HHo" firstAttribute="leading" secondItem="gNW-E5-Zg4" secondAttribute="leading" constant="24" id="DWh-yI-nQ7"/>
+                            <constraint firstItem="vDn-w7-uKH" firstAttribute="leading" secondItem="gNW-E5-Zg4" secondAttribute="leading" constant="20" id="Mqt-yg-ngw"/>
+                            <constraint firstItem="vDn-w7-uKH" firstAttribute="height" secondItem="1Cu-gg-nLT" secondAttribute="height" multiplier="0.0636161" id="Qhv-3e-4wD"/>
                             <constraint firstItem="csc-C4-Alz" firstAttribute="top" secondItem="gNW-E5-Zg4" secondAttribute="top" constant="24" id="UJ1-Jg-vOg"/>
+                            <constraint firstItem="gNW-E5-Zg4" firstAttribute="trailing" secondItem="vDn-w7-uKH" secondAttribute="trailing" constant="20" id="V4Q-rO-yo7"/>
                             <constraint firstItem="AaA-sd-HHo" firstAttribute="height" secondItem="1Cu-gg-nLT" secondAttribute="height" multiplier="0.2" id="Ypq-KB-Y7w"/>
-                            <constraint firstItem="vDn-w7-uKH" firstAttribute="trailing" secondItem="gNW-E5-Zg4" secondAttribute="trailing" id="eSx-6M-7Ag"/>
+                            <constraint firstItem="vDn-w7-uKH" firstAttribute="centerX" secondItem="gNW-E5-Zg4" secondAttribute="centerX" id="dBn-Q8-k4O"/>
                             <constraint firstItem="csc-C4-Alz" firstAttribute="leading" secondItem="gNW-E5-Zg4" secondAttribute="leading" constant="24" id="mt7-Np-Yxz"/>
                             <constraint firstItem="gNW-E5-Zg4" firstAttribute="trailing" secondItem="csc-C4-Alz" secondAttribute="trailing" constant="24" id="qZj-FB-5NX"/>
-                            <constraint firstItem="vDn-w7-uKH" firstAttribute="leading" secondItem="gNW-E5-Zg4" secondAttribute="leading" id="wmI-h5-So4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f5M-1B-89S">
@@ -147,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeg-iP-Gez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="713" y="-21"/>
+            <point key="canvasLocation" x="711.59420289855075" y="-21.428571428571427"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
