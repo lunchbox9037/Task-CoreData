@@ -8,6 +8,9 @@
 import UIKit
 
 class TaskListTableViewController: UITableViewController {
+    // MARK: - Properties
+    var project: Project?
+        
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +18,8 @@ class TaskListTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        TaskController.shared.fetchTasks()
+        guard let selectedProject = project else {return}
+        TaskController.shared.fetchTasks(project: selectedProject)
         tableView.reloadData()
     }
 
@@ -29,14 +33,25 @@ class TaskListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "To Do" : "Completed"
+        var header = ""
+        if section == 0 {
+            if TaskController.shared.incompleteTasks.count > 0 {
+                header = "To Do"
+            }
+        } else if section == 1 {
+            if TaskController.shared.completeTasks.count > 0 {
+                header = "Completed"
+            }
+        }
+        return header
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? TaskTableViewCell else {return UITableViewCell()}
+        let task = TaskController.shared.sectionedTasks[indexPath.section][indexPath.row]
         
         cell.delegate = self
-        cell.task = TaskController.shared.sectionedTasks[indexPath.section][indexPath.row]
+        cell.task = task
         return cell
     }
 
@@ -55,6 +70,10 @@ class TaskListTableViewController: UITableViewController {
                   let destination = segue.destination as? TaskDetailViewController else {return}
             let taskToSend = TaskController.shared.sectionedTasks[indexPath.section][indexPath.row]
             destination.task = taskToSend
+        } else if segue.identifier == "createNewTask" {
+            guard let projectToSend = project,
+                  let destination = segue.destination as? TaskDetailViewController else {return}
+            destination.project = projectToSend
         }
     }
 }

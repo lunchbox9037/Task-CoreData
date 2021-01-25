@@ -16,6 +16,7 @@ class TaskDetailViewController: UIViewController, UNUserNotificationCenterDelega
     // MARK: - Properties
     var task: Task?
     var date: Date?
+    var project: Project?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -37,12 +38,9 @@ class TaskDetailViewController: UIViewController, UNUserNotificationCenterDelega
         if let task = task {
             TaskController.shared.update(task: task, with: taskName, notes: taskNotes, dueDate: date)
         } else {
-            TaskController.shared.createTaskWith(name: taskName, notes: taskNotes, dueDate: date)
+            guard let project = project else {return}
+            TaskController.shared.createTaskFor(project: project, name: taskName, notes: taskNotes, dueDate: date)
         }
-        
-        //create notification
-        scheduleNotification(taskName: taskName, dueDate: date ?? Date())
-        
         navigationController?.popViewController(animated: true)
     }
     

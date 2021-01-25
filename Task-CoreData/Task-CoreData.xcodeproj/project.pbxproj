@@ -21,7 +21,10 @@
 		F61FE7F925B794E600EACE56 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61FE7F825B794E600EACE56 /* TaskTableViewCell.swift */; };
 		F61FE7FF25B79C9100EACE56 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61FE7FE25B79C9100EACE56 /* DateFormatterExtension.swift */; };
 		F61FE80225B7DB1100EACE56 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61FE80125B7DB1100EACE56 /* GestureRecognizer.swift */; };
-		F61FE80525B7E29C00EACE56 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61FE80425B7E29C00EACE56 /* Notifications.swift */; };
+		F61FE80525B7E29C00EACE56 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61FE80425B7E29C00EACE56 /* NotificationScheduler.swift */; };
+		F66AD14925B8EE2B0054F3DF /* Project+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66AD14825B8EE2B0054F3DF /* Project+Convenience.swift */; };
+		F66AD14C25B8F3FA0054F3DF /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66AD14B25B8F3FA0054F3DF /* ProjectListViewController.swift */; };
+		F66AD14F25B8F6C90054F3DF /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66AD14E25B8F6C90054F3DF /* ProjectController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +44,10 @@
 		F61FE7F825B794E600EACE56 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		F61FE7FE25B79C9100EACE56 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		F61FE80125B7DB1100EACE56 /* GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
-		F61FE80425B7E29C00EACE56 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		F61FE80425B7E29C00EACE56 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		F66AD14825B8EE2B0054F3DF /* Project+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+Convenience.swift"; sourceTree = "<group>"; };
+		F66AD14B25B8F3FA0054F3DF /* ProjectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
+		F66AD14E25B8F6C90054F3DF /* ProjectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +80,7 @@
 		7EDB766F25B6996A00B80B7D /* Task-CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				F61FE7EC25B785B300EACE56 /* Model */,
+				7EDB768D25B699AA00B80B7D /* CoreData */,
 				7EDB768C25B6999F00B80B7D /* Views */,
 				F61FE7E225B781FC00EACE56 /* Controllers */,
 				F61FE7FC25B79C4100EACE56 /* Helper */,
@@ -118,6 +124,7 @@
 				7EDB767925B6996A00B80B7D /* Task_CoreData.xcdatamodeld */,
 				F61FE7ED25B785D800EACE56 /* CoreDataStack.swift */,
 				F61FE7F125B7867500EACE56 /* Task+Convenience.swift */,
+				F66AD14825B8EE2B0054F3DF /* Project+Convenience.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -136,6 +143,7 @@
 			children = (
 				F61FE7E625B782AB00EACE56 /* TaskListTableViewController.swift */,
 				F61FE7E925B7837D00EACE56 /* TaskDetailViewController.swift */,
+				F66AD14B25B8F3FA0054F3DF /* ProjectListViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -144,16 +152,9 @@
 			isa = PBXGroup;
 			children = (
 				F61FE7F425B7884F00EACE56 /* TaskController.swift */,
+				F66AD14E25B8F6C90054F3DF /* ProjectController.swift */,
 			);
 			path = "Model Controller";
-			sourceTree = "<group>";
-		};
-		F61FE7EC25B785B300EACE56 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7EDB768D25B699AA00B80B7D /* CoreData */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		F61FE7F725B794BD00EACE56 /* Custom Cell */ = {
@@ -169,7 +170,7 @@
 			children = (
 				F61FE7FE25B79C9100EACE56 /* DateFormatterExtension.swift */,
 				F61FE80125B7DB1100EACE56 /* GestureRecognizer.swift */,
-				F61FE80425B7E29C00EACE56 /* Notifications.swift */,
+				F61FE80425B7E29C00EACE56 /* NotificationScheduler.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -244,15 +245,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F61FE80525B7E29C00EACE56 /* Notifications.swift in Sources */,
+				F66AD14C25B8F3FA0054F3DF /* ProjectListViewController.swift in Sources */,
+				F61FE80525B7E29C00EACE56 /* NotificationScheduler.swift in Sources */,
 				7EDB767125B6996A00B80B7D /* AppDelegate.swift in Sources */,
 				7EDB767325B6996A00B80B7D /* SceneDelegate.swift in Sources */,
 				F61FE7FF25B79C9100EACE56 /* DateFormatterExtension.swift in Sources */,
+				F66AD14F25B8F6C90054F3DF /* ProjectController.swift in Sources */,
 				F61FE7F925B794E600EACE56 /* TaskTableViewCell.swift in Sources */,
 				F61FE7E725B782AB00EACE56 /* TaskListTableViewController.swift in Sources */,
 				F61FE7F225B7867500EACE56 /* Task+Convenience.swift in Sources */,
 				F61FE7EE25B785D800EACE56 /* CoreDataStack.swift in Sources */,
 				F61FE80225B7DB1100EACE56 /* GestureRecognizer.swift in Sources */,
+				F66AD14925B8EE2B0054F3DF /* Project+Convenience.swift in Sources */,
 				7EDB767B25B6996A00B80B7D /* Task_CoreData.xcdatamodeld in Sources */,
 				F61FE7F525B7884F00EACE56 /* TaskController.swift in Sources */,
 				F61FE7EA25B7837D00EACE56 /* TaskDetailViewController.swift in Sources */,
